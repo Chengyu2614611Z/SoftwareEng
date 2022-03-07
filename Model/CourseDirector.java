@@ -1,16 +1,18 @@
-package model;
+package Model;
 
-public class ClassDirector{
+public class CourseDirector{
 
-	private ListOfClassRequirements listOfClassRequirements = new ListOfClassRequirements();
+	private ListofRequirements listOfClassRequirements = new ListofRequirements();
+	private Requirements requirement;
 
-	//获得教学要求
-	public ListOfClassRequirements getListOfClassRequirements(){
+	//
+	public ListofRequirements getListOfClassRequirements(){
 		return this.listOfClassRequirements;
 	}
 
-	public void newClassRequirement(String teachingrequirement){
-		this.listOfClassRequirements.add(teachingrequirement);
+	public void newClassRequirement(String a){
+		this.requirement.setRequirement(a);
+		this.listOfClassRequirements.add(this.requirement);
 	}
 
 	public void subClassRequirement(int index){
