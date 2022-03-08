@@ -7,28 +7,28 @@ import java.util.Iterator;
 public class ListofRequirements{
 
 	//to store all teaching requirements
-	private ArrayList<Requirements> listOfClassRequirements = new ArrayList<>();
-	private Iterator<Requirements> it;
+	private ArrayList<Class> listOfClassRequirements = new ArrayList<>();
+	private Iterator<Class> it;
 
 	public ListofRequirements(){
 
 	}
 
-	public ArrayList<Requirements> getListOfClassRequirements(){
+	public ArrayList<Class> getListOfClassRequirements(){
 		return this.listOfClassRequirements;
 	}
 
-	public Iterator<Requirements> it(){
+	public Iterator<Class> getit(){
 		it = this.listOfClassRequirements.iterator();
 		return this.it;
 	}
 
-	public void add(Requirements a) {
-		this.listOfClassRequirements.add(a);
+	public void add(Class requirement) {
+		this.listOfClassRequirements.add(requirement);
 	}
 
-	public void remove(int index){
-		this.listOfClassRequirements.remove(index);
+	public void remove(Class subRequirement){
+		this.listOfClassRequirements.remove(subRequirement);
 	}
 
 	public int requirementsRemaining(){

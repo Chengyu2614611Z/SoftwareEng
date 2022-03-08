@@ -1,21 +1,23 @@
 package Model;
 
-public class CourseDirector{
+public class CourseDirector {
 
 	private ListofRequirements listOfClassRequirements = new ListofRequirements();
-	private Requirements requirement;
 
 	//
-	public ListofRequirements getListOfClassRequirements(){
+	public ListofRequirements getListOfClassRequirements() {
 		return this.listOfClassRequirements;
 	}
 
-	public void newClassRequirement(String a){
-		this.requirement.setRequirement(a);
-		this.listOfClassRequirements.add(this.requirement);
+	public void newClassRequirement(Class newrequirement) {
+		this.listOfClassRequirements.add(newrequirement);
 	}
 
-	public void subClassRequirement(int index){
-		this.listOfClassRequirements.remove(index);
+	public void subClassRequirement(Class subRequirement) {
+		this.listOfClassRequirements.remove(subRequirement);
+	}
+
+	public void printRequirement() {
+		this.listOfClassRequirements.print();
 	}
 }
