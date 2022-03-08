@@ -35,21 +35,18 @@ public class AllView {
 		System.out.println("| Class Director Access Mode |");
 		System.out.println("------------------------------");
 		System.out.println("	Select option...");
-		System.out.println("		1. Create/Edit list of class requirements");
-		System.out.println("		2. Return to main menu");
+		System.out.println("		1. Create list of class requirements");
+		System.out.println("		2. Quit");
 		System.out.println("--------------------------------------------");
 	}
 
 	public void drawClassDirectorCreate() { // Class Director Menu 2
 		System.out.println();
 		System.out.println("------------------------------");
-		System.out.println("| List of Class Requirements |");
-		System.out.println("------------------------------");
 		System.out.println("	Select option...");
 		System.out.println("		1. Add class requirement");
 		System.out.println("		2. Remove class requirement");
-		System.out.println("		3. View current class requirements");
-		System.out.println("		4. Return to CD Menu");
+		System.out.println("		3. Return to CD Menu");
 		System.out.println("-----------------------------------");
 	}
 

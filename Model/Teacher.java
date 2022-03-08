@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Teacher {
 
-	private ArrayList<Class> assignedClasses = new ArrayList<>();
+	private ArrayList<Course> assignedClasses = new ArrayList<>();
 
 	private String name;
 	private String subjectArea;
 	private int age;
-	private boolean Traincondition;
+	private boolean Traincondition; // be trained or not
 
 	public Teacher(String name, String subjectArea, int age, boolean traincondition) {
 		super();
@@ -19,7 +19,17 @@ public class Teacher {
 		Traincondition = traincondition;
 	}
 
-	public ArrayList<Class> getAssignedClasses() {
+	public boolean assignClass(Course assignedClass, ListofRequirements requirements) {
+		if (!assignedClass.getName().equals(this.subjectArea)) {
+			System.out.print("This staff member is not part of the " + assignedClass.getName() + " trained staff.");
+			return false;
+		}
+		this.assignedClasses.add(assignedClass);
+		requirements.remove(assignedClass);
+		return true;
+	}
+
+	public ArrayList<Course> getAssignedClasses() {
 		return this.assignedClasses;
 	}
 

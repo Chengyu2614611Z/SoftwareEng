@@ -9,11 +9,11 @@ public class CourseDirector {
 		return this.listOfClassRequirements;
 	}
 
-	public void newClassRequirement(Class newrequirement) {
+	public void newClassRequirement(Course newrequirement) {
 		this.listOfClassRequirements.add(newrequirement);
 	}
 
-	public void subClassRequirement(Class subRequirement) {
+	public void subClassRequirement(Course subRequirement) {
 		this.listOfClassRequirements.remove(subRequirement);
 	}
 

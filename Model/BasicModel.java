@@ -2,10 +2,10 @@ package Model;
 
 public class BasicModel {
     CourseDirector cd;
-    private PTTDirector ptt;
+    PTTDirector ptt;
     Admin admin;
     Model.File file = new Model.File();
-    ListofTeacher listOfTeacher;
+    ListofTeacher listofTeacher;
 
     // must make it possible to have multiple class directors
 
@@ -19,7 +19,7 @@ public class BasicModel {
 
     public void ReadFile() {
         this.file.readListofTeacher();
-        this.listOfTeacher = this.file.getListofTeacher();
+        this.listofTeacher = this.file.getListofTeacher();
     }
 
     public void newClassDirector() { // Creates temp object for user sessions

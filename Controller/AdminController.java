@@ -13,7 +13,7 @@ public class AdminController {
 	private int readInput; // Holds user menu input for condition checks
 	private int IntUserInput; // int for class creation and queries
 	private String StringUserInput; // String search query story
-	private Class currentClass = null;
+	private Course currentClass = null;
 
 	public AdminController(BasicModel model, AllView view) {
 		this.basicmodel = model;
@@ -57,7 +57,8 @@ public class AdminController {
 							this.StringUserInput = this.systemInput.next();
 							this.systemInput.nextLine();
 							try {
-								successfulAssignment = this.basicmodel.getListofTeacher().findStaff(StringUserInput)
+								successfulAssignment = this.basicmodel.getListofTeacher()
+										.findAccordingtoName(StringUserInput)
 										.assignClass(
 												currentClass, this.basicmodel.getCd().getListOfClassRequirements());
 							} catch (Exception e) {
