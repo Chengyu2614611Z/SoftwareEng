@@ -41,14 +41,12 @@ public class ListofRequirements {
 			if (curVal.getName().contains(search)) {
 				curVal.print();
 			}
-			if (curVal.getName().contains(search)) {
-				curVal.print();
-			}
 		}
 		return "Your search has returned empty...";
 	}
 
-	public String find(int search) { // See ClassDirector for find function to return Class
+	// print requirement according to search key words --> Course name (subject）
+	public String find(int search) {
 		for (Course curVal : listofClassRequirements) {
 			if (curVal.getClassesPerWeek() == search) {
 				curVal.print();
@@ -57,9 +55,9 @@ public class ListofRequirements {
 		return "Your search has returned empty...";
 	}
 
+	// return requirement(Course object) according to search keywords(course name)
 	public Course searchClass(String currSearch) {
-		for (Course selClass : this.listofClassRequirements) { // .find function which will return a Class rather than a
-																// String
+		for (Course selClass : this.listofClassRequirements) {
 			if (selClass.getName().equals(currSearch)) {
 				return selClass;
 			}
@@ -67,9 +65,10 @@ public class ListofRequirements {
 		return null;
 	}
 
+	// print all requirements
 	public void print() {
-		for (Course printVal : listofClassRequirements) {
-			printVal.print();
+		for (Course courses : listofClassRequirements) {
+			courses.print();
 		}
 	}
 }

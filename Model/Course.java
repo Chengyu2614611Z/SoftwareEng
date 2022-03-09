@@ -19,7 +19,7 @@ public class Course {
 	}
 
 	public void print() {
-		System.out.printf("Class Subject: %s | Classes per week: %d", this.name, this.classesPerWeek);
+		System.out.printf("Class Subject:  " + this.name + " Class number per week:  " + this.classesPerWeek);
 		System.out.println();
 	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Teacher {
 
-	private ArrayList<Course> assignedClasses = new ArrayList<>();
+	private ArrayList<Course> assignedCourse = new ArrayList<>();
 
 	private String name;
 	private String subjectArea;
@@ -19,18 +19,19 @@ public class Teacher {
 		Traincondition = traincondition;
 	}
 
-	public boolean assignClass(Course assignedClass, ListofRequirements requirements) {
-		if (!assignedClass.getName().equals(this.subjectArea)) {
-			System.out.print("This staff member is not part of the " + assignedClass.getName() + " trained staff.");
+	// Assign requirement to teacher.
+	public boolean assignClass(Course assignedCourse, ListofRequirements requirements) {
+		if (!assignedCourse.getName().equals(this.subjectArea)) {
+			System.out.print("This staff member is not part of the " + assignedCourse.getName() + " trained staff.");
 			return false;
 		}
-		this.assignedClasses.add(assignedClass);
-		requirements.remove(assignedClass);
+		this.assignedCourse.add(assignedCourse);
+		requirements.remove(assignedCourse);
 		return true;
 	}
 
 	public ArrayList<Course> getAssignedClasses() {
-		return this.assignedClasses;
+		return this.assignedCourse;
 	}
 
 	public String getName() {
@@ -42,6 +43,7 @@ public class Teacher {
 	}
 
 	public void print() {
-		System.out.printf("Name: %s | Subject: %s | Current classes: %d\n", this.name);
+		System.out.printf("Name: " + this.getName() + "  Subject: " + this.getSubjectArea() + "TrainedOrNot:  "
+				+ this.Traincondition);
 	}
 }

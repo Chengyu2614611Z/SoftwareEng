@@ -14,11 +14,11 @@ public class ListofAssignments {
 
 	}
 
-	public ArrayList<Class> getListOfClassRequirements() {
+	public ArrayList<Course> getListOfClassRequirements() {
 		return this.listOfClassAssignments;
 	}
 
-	public Iterator<Class> it() {
+	public Iterator<Course> it() {
 		it = this.listOfClassAssignments.iterator();
 		return this.it;
 	}

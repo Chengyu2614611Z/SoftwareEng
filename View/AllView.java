@@ -35,7 +35,7 @@ public class AllView {
 		System.out.println("| Class Director Access Mode |");
 		System.out.println("------------------------------");
 		System.out.println("	Select option...");
-		System.out.println("		1. Create list of class requirements");
+		System.out.println("		1. List of class requirements");
 		System.out.println("		2. Quit");
 		System.out.println("--------------------------------------------");
 	}
@@ -46,14 +46,22 @@ public class AllView {
 		System.out.println("	Select option...");
 		System.out.println("		1. Add class requirement");
 		System.out.println("		2. Remove class requirement");
-		System.out.println("		3. Return to CD Menu");
-		System.out.println("-----------------------------------");
+		System.out.println("		3. Veiw All Requirement");
+		System.out.println("		4. Return to CD Menu");
+
 	}
 
 	public void noClassDirectors() {
 		System.out.println();
 		System.out.println("There are currently no lists of requirements...");
 		System.out.println("Please contact Class Director before progressing.");
+	}
+
+	public void showrequirement() {
+		System.out.println();
+		System.out.println("------------------------------");
+		System.out.println("..	Here are the requiremnt ..");
+		System.out.println("------------------------------");
 	}
 
 	public void drawAdminNameWait() {

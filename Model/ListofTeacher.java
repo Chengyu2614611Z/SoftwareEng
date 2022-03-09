@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 // Generated via .txt file input
 public class ListofTeacher {
@@ -33,11 +34,17 @@ public class ListofTeacher {
 
 	// According to teacher name
 	public Teacher findAccordingtoName(String search) {
-		for (Teacher th : this.ListofTeacher) {
-			if (th.getName().equals(search)) {
-				return th;
+		Iterator<Teacher> it = this.ListofTeacher.iterator();
+		while (it.hasNext()) {
+			if (it.next().getName().equals(search)) {
+				return it.next();
 			}
 		}
+		// for (Teacher th : this.ListofTeacher) {
+		// if (th.getName().equals(search)) {
+		// return th;
+		// }
+		// }
 		return null;
 	}
 

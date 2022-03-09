@@ -19,6 +19,7 @@ public class PTTDirectorController {
     public PTTDirectorController(BasicModel model, AllView view) {
         this.model = model;
         this.view = view;
+        this.model.newPTTDirector();
     }
 
     public void runtimePTT() throws InterruptedException {
