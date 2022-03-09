@@ -20,14 +20,12 @@ public class Teacher {
 	}
 
 	// Assign requirement to teacher.
-	public boolean assignClass(Course assignedCourse, ListofRequirements requirements) {
+	public void assignClass(Course assignedCourse, ListofRequirements requirements) {
 		if (!assignedCourse.getName().equals(this.subjectArea)) {
 			System.out.print("This staff member is not part of the " + assignedCourse.getName() + " trained staff.");
-			return false;
 		}
 		this.assignedCourse.add(assignedCourse);
 		requirements.remove(assignedCourse);
-		return true;
 	}
 
 	public ArrayList<Course> getAssignedClasses() {

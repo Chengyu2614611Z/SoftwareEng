@@ -24,9 +24,9 @@ public class AllView {
 	public void drawAdminOptions() { // Admin Menu 2
 		System.out.println();
 		System.out.println("--------------------------------------------");
-		System.out.println("	Start by searching for Staff,");
-		System.out.println("	by Subject Area or class slots available...");
-		System.out.println("-----------------------------------------------------");
+		System.out.println(".......Start by searching for Staff,........");
+		System.out.println("......by Subject Area or Teacher name.......");
+		System.out.println("--------------------------------------------");
 	}
 
 	public void drawClassDirectorSelect() { // Class Director Menu 1
@@ -98,6 +98,11 @@ public class AllView {
 	public void removeClassRequirement() { // When class director wants to remove a class
 		System.out.println();
 		System.out.println("Please input the class title you wish to remove...");
+	}
+
+	public void gotoAdminModule() { // When class director wants to remove a class
+		System.out.println();
+		System.out.println("Go to Admin Module");
 	}
 
 	public void notValidMatch() { // String matching error

@@ -25,9 +25,9 @@ public class ListofTeacher {
 
 	// print teahcer seaching teacher's name or subjectArea
 	public void find(String search) {
-		for (Teacher curVal : this.ListofTeacher) {
-			if (curVal.getSubjectArea().contains(search) || curVal.getName().contains(search)) {
-				curVal.print();
+		for (Teacher teacher : this.ListofTeacher) {
+			if (teacher.getSubjectArea().contains(search)) {
+				teacher.print();
 			}
 		}
 	}

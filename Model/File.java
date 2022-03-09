@@ -23,7 +23,7 @@ public class File {
             while ((read = br.readLine()) != null) { // while there is another line in the txt file to read
                 attributes = read.split("\\s+");
                 this.ListofTeacher.add(new Teacher(attributes[0], attributes[1], Integer.parseInt(attributes[2]),
-                        Boolean.parseBoolean(attributes[4])));
+                        Boolean.parseBoolean(attributes[3])));
                 classNames += attributes[1] + " ";
             }
             System.out.println("File successfully read.");

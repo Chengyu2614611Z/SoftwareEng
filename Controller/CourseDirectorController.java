@@ -8,8 +8,8 @@ import View.*;
 
 public class CourseDirectorController {
 
-    private BasicModel model;
-    private AllView view;
+    BasicModel basicmodel;
+    AllView view;
     private Scanner systemInput = new Scanner(System.in); // User input instance
     private int readInput; // Holds user menu input for condition checks
     private int intChecker; // int for class creation and queries
@@ -17,9 +17,9 @@ public class CourseDirectorController {
     private Course currentClass = null;
 
     public CourseDirectorController(BasicModel model, AllView view) {
-        this.model = model;
+        this.basicmodel = model;
         this.view = view;
-        this.model.newClassDirector();
+        this.basicmodel.newClassDirector();
 
     }
 
@@ -48,12 +48,14 @@ public class CourseDirectorController {
                             this.intChecker = this.systemInput.nextInt(); // Check input hours
                             this.systemInput.nextLine();
                         } while (this.intChecker <= 0);
-                        this.model.getCd().newClassRequirement(new Course(this.stringChecker, this.intChecker));
+                        this.basicmodel.getCd().newClassRequirement(new Course(this.stringChecker, this.intChecker));
                         this.view.confirmClass();
                         Thread.sleep(500);
                         this.ClassDirectorModule();
 
                     }
+                        break;
+
                     case 2: { // Remove class requirement
                         this.view.removeClassRequirement();
                         do {
@@ -61,10 +63,11 @@ public class CourseDirectorController {
                             this.systemInput.nextLine();
                         } while (this.stringChecker.equals(""));
                         try {
-                            this.model.getCd().subClassRequirement(
-                                    this.model.getCd().getListOfClassRequirements().searchClass(this.stringChecker)); // finds
-                                                                                                                      // Class
-                                                                                                                      // to
+                            this.basicmodel.getCd().subClassRequirement(
+                                    this.basicmodel.getCd().getListOfClassRequirements()
+                                            .searchClass(this.stringChecker)); // finds
+                            // Class
+                            // to
                             // remove and then
                             // removes it
                         } catch (Exception e) {
@@ -75,12 +78,12 @@ public class CourseDirectorController {
                         this.view.confirmClass();
                         Thread.sleep(300);
                         this.ClassDirectorModule();
-                        break;
                     }
+                        break;
 
                     case 3: // View current list of class requirements
                         this.view.showrequirement();
-                        this.model.getCd().getListOfClassRequirements().print();
+                        this.basicmodel.getCd().getListOfClassRequirements().print();
                         // this.stringChecker = this.systemInput.next();
                         // this.systemInput.nextLine();
                         // if (!stringChecker.equals("")) {
@@ -105,8 +108,8 @@ public class CourseDirectorController {
                 break;
 
             case 2:
-                System.exit(0);
-                break;
+                this.view.gotoAdminModule();
+                return;
 
             default:
                 this.view.notValid();

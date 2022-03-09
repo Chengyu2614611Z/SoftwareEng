@@ -20,75 +20,83 @@ public class AdminController {
 		this.view = view;
 	}
 
-	public void runtimeAdmin() throws InterruptedException {
-		// When administrator menu option chosen
-		this.view.drawAdminOptions();
+	public void AdminModule() throws InterruptedException {
+
 		do {
+			// When administrator menu option chosen
+			this.view.drawAdminSelect();
 			this.readInput = this.systemInput.nextInt();
 			this.systemInput.nextLine();
-			if (this.readInput == 1) {
-				if (this.basicmodel.getCd() != null) {
 
-					while (this.basicmodel.getCd().getListOfClassRequirements().getit().hasNext()) {
-						currentClass = this.basicmodel.getCd().getListOfClassRequirements().getit().next(); // current
-																											// //
-																											// assigned
-						System.out.println();
+			switch (this.readInput) {
+				case 1: {
+					if (this.basicmodel.getCd() != null) {
 
-						currentClass.print(); // print Class requirement 1..n
+						while (this.basicmodel.getCd().getListOfClassRequirements().getit().hasNext()) {
+							currentClass = this.basicmodel.getCd().getListOfClassRequirements().getit().next(); // current
+																												// //
+																												// assigned
+							System.out.println();
 
-						// Thread.sleep(1000);
-						do {
+							currentClass.print(); // print Class requirement 1..n
+
+							// Thread.sleep(1000);
+
 							this.view.drawAdminOptions();
 							this.StringUserInput = this.systemInput.next();
 							this.systemInput.nextLine();
 							this.basicmodel.getListofTeacher().find(StringUserInput); // allow admin to search for
-																						// appropriate
-							// staff
+																						// appropriate staff
 							// Thread.sleep(1000);
 							this.view.readyToAssign();
 							this.StringUserInput = this.systemInput.next();
 							this.systemInput.nextLine();
-						} while (!this.StringUserInput.equals("Y"));
 
-						boolean successfulAssignment = false;
-						while (!successfulAssignment) {
-							this.view.drawAdminNameWait();
-							this.StringUserInput = this.systemInput.next();
-							this.systemInput.nextLine();
-							try {
-								successfulAssignment = this.basicmodel.getListofTeacher()
-										.findAccordingtoName(StringUserInput)
-										.assignClass(
-												currentClass, this.basicmodel.getCd().getListOfClassRequirements());
-							} catch (Exception e) {
-								this.view.classError();
-								Thread.sleep(300);
-							}
-							if (successfulAssignment) {
-								this.view.confirmClass();
-								Thread.sleep(300);
-							} else {
-								this.view.classError();
+							boolean successfulAssignment = false;
+							while (!successfulAssignment) {
+								this.view.drawAdminNameWait();
+								this.StringUserInput = this.systemInput.next();
+								this.systemInput.nextLine();
+								try {
+									this.basicmodel.getListofTeacher().findAccordingtoName(StringUserInput)
+											.assignClass(currentClass,
+													this.basicmodel.getCd().getListOfClassRequirements());
+									successfulAssignment = true;
+								} catch (Exception e) {
+									this.view.classError();
+									Thread.sleep(300);
+								}
+								if (successfulAssignment) {
+									this.view.confirmClass();
+									Thread.sleep(300);
+								} else {
+									this.view.classError();
+								}
 							}
 						}
+						System.out.println("End of required classes, please contact PTT Director");
+						this.AdminModule();
+					} else {
+						this.view.noClassDirectors();
+						this.basicmodel.newClassDirector();
+						Thread.sleep(300);
+						this.AdminModule();
 					}
-					System.out.println("End of required classes, please contact PTT Director");
-					this.runtimeAdmin();
-				} else {
-					this.view.noClassDirectors();
-					this.basicmodel.newClassDirector();
-					Thread.sleep(300);
-					this.runtimeAdmin();
 				}
-			} else if (this.readInput == 2) {
-				System.exit(0);
-			} else {
-				this.view.notValid();
-				Thread.sleep(300);
-				this.view.drawAdminSelect();
+					break;
+
+				case 2:
+					System.exit(0);
+					break;
+
+				default:
+					this.AdminModule();
+					break;
+
 			}
-		} while (this.readInput != 2);
+
+		} while (readInput != 4);
+
 	}
 
 }
