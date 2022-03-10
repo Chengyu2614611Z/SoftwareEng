@@ -7,33 +7,57 @@ import java.util.Iterator;
 public class ListofAssignments {
 
 	// to store all teaching requirements
-	private ArrayList listOfClassAssignments = new ArrayList<>();
+	private ArrayList<Teacher> teacher;
+	private ArrayList<Course> AssignmentsList;
+	private boolean pttDirectorSignOff;
+	private ArrayList<String> Requests;
+
 	private Iterator it;
 
-	public ListofAssignments() {
+	public ListofAssignments(ListofTeacher teacherlist) {
+		this.teacher = teacherlist.getlistofTeacher();
+		this.pttDirectorSignOff = false;
+		this.AssignmentsList = new ArrayList<>();
+		this.Requests = new ArrayList<String>();
+	}
 
+	public void generateRequest() {
+		String teachingRequest;
+		for (Teacher member : this.teacher) {
+			if (!member.getAssignedClasses().isEmpty()) {
+				teachingRequest = member.toString();
+				for (Course assigned : member.getAssignedClasses()) {
+					teachingRequest += assigned.toString();
+				}
+				this.Requests.add(teachingRequest);
+			}
+		}
+	}
+
+	public ArrayList<String> getRequest() {
+		return this.Requests;
 	}
 
 	public ArrayList<Course> getListOfClassRequirements() {
-		return this.listOfClassAssignments;
+		return this.AssignmentsList;
 	}
 
 	public Iterator<Course> it() {
-		it = this.listOfClassAssignments.iterator();
+		it = this.AssignmentsList.iterator();
 		return this.it;
 	}
 
-	public void add(String a) {
-		this.listOfClassAssignments.add(a);
+	public void add(Course a) {
+		this.AssignmentsList.add(a);
 	}
 
-	public void remove(int index) {
-		this.listOfClassAssignments.remove(index);
+	public void remove(Course a) {
+		this.AssignmentsList.remove(a);
 	}
 
 	public int requirementsRemaining() {
 		this.print();
-		return this.listOfClassAssignments.size();
+		return this.AssignmentsList.size();
 	}
 
 	public void print() {

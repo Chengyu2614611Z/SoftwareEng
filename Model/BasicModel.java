@@ -5,6 +5,7 @@ public class BasicModel {
     PTTDirector ptt;
     Admin admin;
     Model.File file = new Model.File();
+    Teacher teacher;
     ListofTeacher ListofTeacher;
 
     // must make it possible to have multiple class directors
@@ -34,6 +35,10 @@ public class BasicModel {
         this.admin = new Admin();
     }
 
+    public void newTeacher(int index) { // Creates temp object for user session
+        this.teacher = this.ListofTeacher.getlistofTeacher().get(index);
+    }
+
     public CourseDirector getCd() {
         return this.cd;
     }
@@ -48,6 +53,10 @@ public class BasicModel {
 
     public Model.File getFile() {
         return this.file;
+    }
+
+    public Teacher getTeacher() {
+        return this.teacher;
     }
 
     public ListofTeacher getListofTeacher() {

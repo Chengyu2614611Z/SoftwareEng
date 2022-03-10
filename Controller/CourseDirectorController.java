@@ -39,15 +39,17 @@ public class CourseDirectorController {
                 switch (this.readInput) {
                     case 1: {
                         this.view.addClassRequirement();
-                        do {
-                            this.stringChecker = this.systemInput.next(); // Checks string input
-                            this.systemInput.nextLine();
-                        } while (this.stringChecker.equals(""));
+
+                        this.stringChecker = this.systemInput.next(); // Checks string input
+                        this.systemInput.nextLine();
+                        Thread.sleep(500);
+
                         this.view.addNumClasses();
-                        do {
-                            this.intChecker = this.systemInput.nextInt(); // Check input hours
-                            this.systemInput.nextLine();
-                        } while (this.intChecker <= 0);
+
+                        this.intChecker = this.systemInput.nextInt(); // Check input hours
+                        this.systemInput.nextLine();
+                        Thread.sleep(500);
+
                         this.basicmodel.getCd().newClassRequirement(new Course(this.stringChecker, this.intChecker));
                         this.view.confirmClass();
                         Thread.sleep(500);
@@ -66,10 +68,7 @@ public class CourseDirectorController {
                             this.basicmodel.getCd().subClassRequirement(
                                     this.basicmodel.getCd().getListOfClassRequirements()
                                             .searchClass(this.stringChecker)); // finds
-                            // Class
-                            // to
-                            // remove and then
-                            // removes it
+
                         } catch (Exception e) {
                             this.view.classError();
                             Thread.sleep(300);
@@ -84,13 +83,7 @@ public class CourseDirectorController {
                     case 3: // View current list of class requirements
                         this.view.showrequirement();
                         this.basicmodel.getCd().getListOfClassRequirements().print();
-                        // this.stringChecker = this.systemInput.next();
-                        // this.systemInput.nextLine();
-                        // if (!stringChecker.equals("")) {
                         this.ClassDirectorModule();
-                        // }
-                        // replace with scanner to check if user wishes to exit
-
                         break;
 
                     case 4:

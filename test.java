@@ -1,7 +1,5 @@
 import Model.*;
 
-import java.util.Scanner;
-
 import Controller.*;
 import View.*;
 
@@ -12,8 +10,6 @@ public class test {
 
         Controller controller = new Controller(model, view);
 
-        // Scanner sc = new Scanner(System.in);
-        // int i = sc.nextInt();
         controller.MainModule();
 
     }

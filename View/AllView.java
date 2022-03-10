@@ -12,6 +12,41 @@ public class AllView {
 		this.model = model;
 	}
 
+	public void teacherModule() {
+		System.out.println();
+		System.out.println("* * * * * * * * * * * * * * * * * * * * * * * *");
+		System.out.println("                Teahcer Module                 ");
+		System.out.println("* * * * * * * * * * * * * * * * * * * * * * * *");
+		System.out.println("* *   View Personal Information(by his id) * * ");
+		System.out.println();
+	}
+
+	public void teacherInfo() {
+		System.out.println();
+		System.out.println("* * * * * * * * * * * * * * * * * * * * * * * *");
+		System.out.println("              Personal Information             ");
+		System.out.println("* *  * * Press 1 to return teacher module * * *");
+		System.out.println("* *  press 2 to View his/her assigned courses* ");
+		System.out.println("* * * * * *Press any other key to quit)* * ** *");
+		System.out.println();
+	}
+
+	public void NoteahcerAssiment() {
+		System.out.println();
+		System.out.println("* * * * * * * * * * * * * * * * * * * * * * * *");
+		System.out.println("           there is no assignment for you      ");
+		System.out.println("        Press 1 to return to teacher module    ");
+		System.out.println("         Press any other number to quit        ");
+		System.out.println();
+	}
+
+	public void ShowteahcerAssiment() {
+		System.out.println();
+		System.out.println("* * * * * * * * * * * * * * * * * * * * * * * *");
+		System.out.println("     Here are/is the assignment(s) for you     ");
+		System.out.println();
+	}
+
 	public void drawAdminSelect() { // Admin Menu 1
 		System.out.println();
 		System.out.println("-----------------------------");
@@ -21,7 +56,7 @@ public class AllView {
 		System.out.println("-----------------------------------------------------");
 	}
 
-	public void drawAdminOptions() { // Admin Menu 2
+	public void AdminIndex() { // Admin Menu 2
 		System.out.println();
 		System.out.println("--------------------------------------------");
 		System.out.println(".......Start by searching for Staff,........");
@@ -102,7 +137,7 @@ public class AllView {
 
 	public void gotoAdminModule() { // When class director wants to remove a class
 		System.out.println();
-		System.out.println("Go to Admin Module");
+		System.out.println("Press 2 to Go to Admin Module");
 	}
 
 	public void notValidMatch() { // String matching error

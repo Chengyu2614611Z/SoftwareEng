@@ -10,7 +10,7 @@ public class AdminController {
 	BasicModel basicmodel;
 	AllView view;
 	private Scanner systemInput = new Scanner(System.in); // User input instance
-	private int readInput; // Holds user menu input for condition checks
+	private int readInput = 1; // Holds user menu input for condition checks
 	private int IntUserInput; // int for class creation and queries
 	private String StringUserInput; // String search query story
 	private Course currentClass = null;
@@ -22,80 +22,70 @@ public class AdminController {
 
 	public void AdminModule() throws InterruptedException {
 
-		do {
-			// When administrator menu option chosen
-			this.view.drawAdminSelect();
-			this.readInput = this.systemInput.nextInt();
-			this.systemInput.nextLine();
+		// When administrator menu option chosen
+		this.view.drawAdminSelect();
+		this.readInput = this.systemInput.nextInt();
+		this.systemInput.nextLine();
 
-			switch (this.readInput) {
-				case 1: {
-					if (this.basicmodel.getCd() != null) {
+		switch (this.readInput) {
+			case 1: {
 
-						while (this.basicmodel.getCd().getListOfClassRequirements().getit().hasNext()) {
-							currentClass = this.basicmodel.getCd().getListOfClassRequirements().getit().next(); // current
-																												// //
-																												// assigned
-							System.out.println();
+				while (this.basicmodel.getCd().getListOfClassRequirements().getit().hasNext()) {
 
-							currentClass.print(); // print Class requirement 1..n
+					currentClass = this.basicmodel.getCd().getListOfClassRequirements().getit().next(); // current
+																										// //
+																										// assigned
+					System.out.println();
 
-							// Thread.sleep(1000);
+					currentClass.print(); // print Class requirement 1..n
 
-							this.view.drawAdminOptions();
-							this.StringUserInput = this.systemInput.next();
-							this.systemInput.nextLine();
-							this.basicmodel.getListofTeacher().find(StringUserInput); // allow admin to search for
-																						// appropriate staff
-							// Thread.sleep(1000);
-							this.view.readyToAssign();
-							this.StringUserInput = this.systemInput.next();
-							this.systemInput.nextLine();
+					this.view.AdminIndex();
+					this.StringUserInput = this.systemInput.next();
+					this.systemInput.nextLine();
+					this.basicmodel.getListofTeacher().find(StringUserInput); // allow admin to search for
+																				// appropriate staff
+					// Thread.sleep(1000);
+					this.view.readyToAssign();
+					this.StringUserInput = this.systemInput.next();
+					this.systemInput.nextLine();
 
-							boolean successfulAssignment = false;
-							while (!successfulAssignment) {
-								this.view.drawAdminNameWait();
-								this.StringUserInput = this.systemInput.next();
-								this.systemInput.nextLine();
-								try {
-									this.basicmodel.getListofTeacher().findAccordingtoName(StringUserInput)
-											.assignClass(currentClass,
-													this.basicmodel.getCd().getListOfClassRequirements());
-									successfulAssignment = true;
-								} catch (Exception e) {
-									this.view.classError();
-									Thread.sleep(300);
-								}
-								if (successfulAssignment) {
-									this.view.confirmClass();
-									Thread.sleep(300);
-								} else {
-									this.view.classError();
-								}
-							}
+					boolean successfulAssignment = false;
+					while (!successfulAssignment) {
+						this.view.drawAdminNameWait();
+						this.StringUserInput = this.systemInput.next();
+						this.systemInput.nextLine();
+						try {
+							//
+							this.basicmodel.getListofTeacher().findAccordingtoName(StringUserInput).train();
+							this.basicmodel.getListofTeacher().findAccordingtoName(StringUserInput)
+									.assignClass(currentClass,
+											this.basicmodel.getCd().getListOfClassRequirements());
+							successfulAssignment = true;
+						} catch (Exception e) {
+							this.view.classError();
+							Thread.sleep(300);
 						}
-						System.out.println("End of required classes, please contact PTT Director");
-						this.AdminModule();
-					} else {
-						this.view.noClassDirectors();
-						this.basicmodel.newClassDirector();
-						Thread.sleep(300);
-						this.AdminModule();
+						if (successfulAssignment) {
+							this.view.confirmClass();
+							Thread.sleep(300);
+						} else {
+							this.view.classError();
+						}
 					}
 				}
-					break;
-
-				case 2:
-					System.exit(0);
-					break;
-
-				default:
-					this.AdminModule();
-					break;
+				System.out.println("End of required classes, please contact PTT Director");
+				this.AdminModule();
 
 			}
+				break;
 
-		} while (readInput != 4);
+			case 2:
+				return;
+			default:
+				this.AdminModule();
+				break;
+
+		}
 
 	}
 

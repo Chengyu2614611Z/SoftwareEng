@@ -11,7 +11,7 @@ public class ListofTeacher {
 	public ListofTeacher() {
 	}
 
-	public ArrayList<Teacher> getlistOfTeacher() {
+	public ArrayList<Teacher> getlistofTeacher() {
 		return this.ListofTeacher;
 	}
 
@@ -53,4 +53,5 @@ public class ListofTeacher {
 			printVal.print();
 		}
 	}
+
 }

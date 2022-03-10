@@ -22,4 +22,8 @@ public class Course {
 		System.out.printf("Class Subject:  " + this.name + " Class number per week:  " + this.classesPerWeek);
 		System.out.println();
 	}
+
+	public String toString() {
+		return "Class Subject:  " + this.name + " Class number per week:  " + this.classesPerWeek;
+	}
 }

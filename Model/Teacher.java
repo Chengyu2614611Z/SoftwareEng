@@ -9,14 +9,14 @@ public class Teacher {
 	private String name;
 	private String subjectArea;
 	private int age;
-	private boolean Traincondition; // be trained or not
+	private boolean traincondition; // be trained or not
 
 	public Teacher(String name, String subjectArea, int age, boolean traincondition) {
 		super();
 		this.name = name;
 		this.subjectArea = subjectArea;
 		this.age = age;
-		Traincondition = traincondition;
+		this.traincondition = traincondition;
 	}
 
 	// Assign requirement to teacher.
@@ -24,6 +24,7 @@ public class Teacher {
 		if (!assignedCourse.getName().equals(this.subjectArea)) {
 			System.out.print("This staff member is not part of the " + assignedCourse.getName() + " trained staff.");
 		}
+		// this.train();
 		this.assignedCourse.add(assignedCourse);
 		requirements.remove(assignedCourse);
 	}
@@ -41,7 +42,16 @@ public class Teacher {
 	}
 
 	public void print() {
-		System.out.printf("Name: " + this.getName() + "  Subject: " + this.getSubjectArea() + "TrainedOrNot:  "
-				+ this.Traincondition);
+		System.out.printf("Name: " + this.getName() + "  Subject: " + this.getSubjectArea() + " TrainedOrNot:  "
+				+ this.traincondition);
+	}
+
+	public String toString() {
+		return "Name: " + this.getName() + "  Subject: " + this.getSubjectArea() + " TrainedOrNot:  "
+				+ this.traincondition;
+	}
+
+	public void train() {
+		this.traincondition = true;
 	}
 }
