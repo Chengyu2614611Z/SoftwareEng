@@ -46,7 +46,6 @@ public class PTTDirectorController {
                             this.systemInput.nextLine();
                             if (this.readInput == 1) {
                                 this.model.getPtt().approveRequest(request);
-                                Requests.getRequest().remove(request);
                             } else if (this.readInput == 2) {
                                 this.model.getPtt().declineRequest(request);
                             }
