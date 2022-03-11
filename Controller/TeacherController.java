@@ -21,6 +21,7 @@ public class TeacherController {
     }
 
     public void TeacherModule() throws InterruptedException {
+        this.view.PttDirectorIndex();
         while (readInput != 0) {
             this.view.teacherModule();
 
@@ -31,6 +32,24 @@ public class TeacherController {
                 case 0:
                     System.exit(0);
                     break;
+
+                case 1:
+                    if (!this.basicmodel.getTeacher().getAssignedClasses().isEmpty()) {
+                        this.view.ShowteahcerAssiment();
+                        for (Course a : this.basicmodel.getTeacher().getAssignedClasses()) {
+                            a.print();
+                        }
+                    } else {
+                        this.view.NoteahcerAssiment();
+                        readInput = systemInput.nextInt();
+                        if (this.readInput == 1) {
+                            this.view.drawMain();
+                            return;
+                        } else {
+                            System.exit(0);
+                        }
+                    }
+
                 default:
                     this.view.teacherInfo();
                     this.basicmodel.getTeacher().print();
@@ -44,6 +63,7 @@ public class TeacherController {
                             if (this.readInput == 1) {
                                 this.TeacherModule();
                             } else {
+                                this.view.drawMain();
                                 return;
                             }
                         }

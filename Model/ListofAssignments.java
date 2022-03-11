@@ -11,7 +11,7 @@ public class ListofAssignments {
 	private ArrayList<Course> AssignmentsList;
 	private boolean pttDirectorSignOff;
 	private ArrayList<String> Requests;
-
+	private boolean add;
 	private Iterator it;
 
 	public ListofAssignments(ListofTeacher teacherlist) {
@@ -21,17 +21,38 @@ public class ListofAssignments {
 		this.Requests = new ArrayList<String>();
 	}
 
+	public Iterator<Course> it() {
+		it = this.AssignmentsList.iterator();
+		return this.it;
+	}
+
 	public void generateRequest() {
-		String teachingRequest;
+
+		// Iterator<Teacher> it = this.teacher.iterator();
+		// while (it.hasNext()) {
+		// String tr = "";
+		// if (!it.next().getAssignedClasses().isEmpty()) {
+		// tr = it.next().toString();
+
+		// for (Course course : it.next().getAssignedClasses()) {
+		// tr = tr + course.toString();
+		// }
+		// }
+		// this.Requests.add(tr);
+
+		// }
+
+		String tr;
 		for (Teacher member : this.teacher) {
 			if (!member.getAssignedClasses().isEmpty()) {
-				teachingRequest = member.toString();
+				tr = member.toString();
 				for (Course assigned : member.getAssignedClasses()) {
-					teachingRequest += assigned.toString();
+					tr += assigned.toString();
 				}
-				this.Requests.add(teachingRequest);
+				this.Requests.add(tr);
 			}
 		}
+
 	}
 
 	public ArrayList<String> getRequest() {
@@ -42,22 +63,12 @@ public class ListofAssignments {
 		return this.AssignmentsList;
 	}
 
-	public Iterator<Course> it() {
-		it = this.AssignmentsList.iterator();
-		return this.it;
-	}
-
 	public void add(Course a) {
 		this.AssignmentsList.add(a);
 	}
 
 	public void remove(Course a) {
 		this.AssignmentsList.remove(a);
-	}
-
-	public int requirementsRemaining() {
-		this.print();
-		return this.AssignmentsList.size();
 	}
 
 	public void print() {

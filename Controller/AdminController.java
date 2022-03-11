@@ -40,38 +40,26 @@ public class AdminController {
 					currentClass.print(); // print Class requirement 1..n
 
 					this.view.AdminIndex();
-					this.StringUserInput = this.systemInput.next();
-					this.systemInput.nextLine();
-					this.basicmodel.getListofTeacher().find(StringUserInput); // allow admin to search for
-																				// appropriate staff
-					// Thread.sleep(1000);
-					this.view.readyToAssign();
-					this.StringUserInput = this.systemInput.next();
-					this.systemInput.nextLine();
+					// this.StringUserInput = this.systemInput.next();
+					// this.systemInput.nextLine();
+					this.basicmodel.getListofTeacher().find(currentClass.getName()); // allow admin to search for
+					// appropriate staff
 
-					boolean successfulAssignment = false;
-					while (!successfulAssignment) {
-						this.view.drawAdminNameWait();
-						this.StringUserInput = this.systemInput.next();
-						this.systemInput.nextLine();
-						try {
-							//
-							this.basicmodel.getListofTeacher().findAccordingtoName(StringUserInput).train();
-							this.basicmodel.getListofTeacher().findAccordingtoName(StringUserInput)
-									.assignClass(currentClass,
-											this.basicmodel.getCd().getListOfClassRequirements());
-							successfulAssignment = true;
-						} catch (Exception e) {
-							this.view.classError();
-							Thread.sleep(300);
-						}
-						if (successfulAssignment) {
-							this.view.confirmClass();
-							Thread.sleep(300);
-						} else {
-							this.view.classError();
-						}
+					this.view.drawAdminNameWait();
+					this.StringUserInput = this.systemInput.next();
+					this.systemInput.nextLine();
+					try {
+						//
+						this.basicmodel.getListofTeacher().findAccordingtoName(StringUserInput).train();
+						this.basicmodel.getListofTeacher().findAccordingtoName(StringUserInput)
+								.assignClass(currentClass,
+										this.basicmodel.getCd().getListOfClassRequirements());
+
+					} catch (Exception e) {
+						Thread.sleep(300);
+						this.AdminModule();
 					}
+
 				}
 				System.out.println("End of required classes, please contact PTT Director");
 				this.AdminModule();
@@ -80,6 +68,7 @@ public class AdminController {
 				break;
 
 			case 2:
+				this.view.drawMain();
 				return;
 			default:
 				this.AdminModule();

@@ -14,6 +14,7 @@ public class CourseDirectorController {
     private int readInput; // Holds user menu input for condition checks
     private int intChecker; // int for class creation and queries
     private String stringChecker; // String search query story
+    private String StringChecker_1;
     private Course currentClass = null;
 
     public CourseDirectorController(BasicModel model, AllView view) {
@@ -46,12 +47,14 @@ public class CourseDirectorController {
 
                         this.view.addNumClasses();
 
-                        this.intChecker = this.systemInput.nextInt(); // Check input hours
+                        this.StringChecker_1 = this.systemInput.next(); // input working day//
                         this.systemInput.nextLine();
                         Thread.sleep(500);
 
-                        this.basicmodel.getCd().newClassRequirement(new Course(this.stringChecker, this.intChecker));
-                        this.view.confirmClass();
+                        this.basicmodel.getCd()
+                                .newClassRequirement(new Course(this.stringChecker, this.StringChecker_1));
+                        // you can view your requirement to see if it's created successfully //
+
                         Thread.sleep(500);
                         this.ClassDirectorModule();
 
@@ -70,11 +73,9 @@ public class CourseDirectorController {
                                             .searchClass(this.stringChecker)); // finds
 
                         } catch (Exception e) {
-                            this.view.classError();
                             Thread.sleep(300);
                             this.ClassDirectorModule();
                         }
-                        this.view.confirmClass();
                         Thread.sleep(300);
                         this.ClassDirectorModule();
                     }

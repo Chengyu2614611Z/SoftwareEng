@@ -1,5 +1,6 @@
 package Controller;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 import Model.*;
@@ -22,12 +23,14 @@ public class PTTDirectorController {
     }
 
     public void PttDirectorModule() throws InterruptedException {
+        this.view.PttDirectorIndex();
         ListofAssignments Requests = new ListofAssignments(this.model.getListofTeacher());
         Requests.generateRequest();
-
         do {
             this.readInput = this.systemInput.nextInt();
             this.systemInput.nextLine();
+
+            // press 1 to see and process requirement//
             if (this.readInput == 1) {
                 do {
                     if (Requests.getRequest().isEmpty()) {
@@ -38,11 +41,12 @@ public class PTTDirectorController {
                             Thread.sleep(500);
                             this.view.approveRequestScreen();
                             System.out.println(request);
+
                             this.readInput = this.systemInput.nextInt();
                             this.systemInput.nextLine();
                             if (this.readInput == 1) {
                                 this.model.getPtt().approveRequest(request);
-                                // teachingRequests.getTeachingRequests().remove(request);
+                                Requests.getRequest().remove(request);
                             } else if (this.readInput == 2) {
                                 this.model.getPtt().declineRequest(request);
                             }
@@ -51,13 +55,16 @@ public class PTTDirectorController {
                     }
                 } while (!Requests.getRequest().isEmpty());
 
-                System.out.println("All available teaching requests have been reviewed...");
-                Thread.sleep(1000);
-                System.out.println("Writing to File...");
+                System.out.println("Requests all been processed");
                 this.model.getPtt().sendToFile();
             }
-            return;
-        } while (this.readInput != 2);
+
+            // press any other key will return to main module
+            else {
+                this.view.drawMain();
+                return;
+            }
+        } while (this.readInput >= 0);
 
     }
 

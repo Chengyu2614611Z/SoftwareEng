@@ -19,12 +19,12 @@ public class Teacher {
 		this.traincondition = traincondition;
 	}
 
+	public void train() {
+		this.traincondition = true;
+	}
+
 	// Assign requirement to teacher.
 	public void assignClass(Course assignedCourse, ListofRequirements requirements) {
-		if (!assignedCourse.getName().equals(this.subjectArea)) {
-			System.out.print("This staff member is not part of the " + assignedCourse.getName() + " trained staff.");
-		}
-		// this.train();
 		this.assignedCourse.add(assignedCourse);
 		requirements.remove(assignedCourse);
 	}
@@ -42,16 +42,21 @@ public class Teacher {
 	}
 
 	public void print() {
-		System.out.printf("Name: " + this.getName() + "  Subject: " + this.getSubjectArea() + " TrainedOrNot:  "
-				+ this.traincondition);
+		if (this.traincondition) {
+			System.out
+					.printf("Name: " + this.getName() + "  | Subject: " + this.getSubjectArea()
+							+ " | Already be trained ");
+		} else {
+			System.out
+					.printf("Name: " + this.getName() + " | Subject: " + this.getSubjectArea()
+							+ " | Need to be trained ");
+		}
+
 	}
 
 	public String toString() {
-		return "Name: " + this.getName() + "  Subject: " + this.getSubjectArea() + " TrainedOrNot:  "
-				+ this.traincondition;
+		return "Name: " + this.getName() + " | Subject: " + this.getSubjectArea()
+				+ " | TrainedOrNot: Already be trained ";
 	}
 
-	public void train() {
-		this.traincondition = true;
-	}
 }

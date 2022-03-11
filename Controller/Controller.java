@@ -39,6 +39,7 @@ public class Controller {
                     break;
                 case 3:
                     this.pttDirectorController.PttDirectorModule();
+                    break;
                 case 4:
                     this.teacherController.TeacherModule();
                     break;

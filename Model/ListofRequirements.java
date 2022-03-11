@@ -45,16 +45,6 @@ public class ListofRequirements {
 		return "Your search has returned empty...";
 	}
 
-	// print requirement according to search key words --> Course name (subject）
-	public String find(int search) {
-		for (Course curVal : listofClassRequirements) {
-			if (curVal.getClassesPerWeek() == search) {
-				curVal.print();
-			}
-		}
-		return "Your search has returned empty...";
-	}
-
 	// return requirement(Course object) according to search keywords(course name)
 	public Course searchClass(String currSearch) {
 		for (Course selClass : this.listofClassRequirements) {

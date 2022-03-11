@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 // Generated via .txt file input
 public class ListofTeacher {
@@ -34,17 +35,29 @@ public class ListofTeacher {
 
 	// According to teacher name
 	public Teacher findAccordingtoName(String search) {
+		// ListIterator<Teacher> it = this.ListofTeacher.listIterator();
+		// while (it.hasNext()) {
+		// if (it.next().getName().equals(search)) {
+		// return it.next();
+		// }
+		// }
+		// return null;
+		for (Teacher teacher : this.ListofTeacher) {
+			if (teacher.getName().equals(search)) {
+				return teacher;
+			}
+		}
+		return null;
+	}
+
+	// find all teachers of a subject
+	public Teacher findAccordingtoSubject(String search) {
 		Iterator<Teacher> it = this.ListofTeacher.iterator();
 		while (it.hasNext()) {
-			if (it.next().getName().equals(search)) {
+			if (it.next().getSubjectArea().equals(search)) {
 				return it.next();
 			}
 		}
-		// for (Teacher th : this.ListofTeacher) {
-		// if (th.getName().equals(search)) {
-		// return th;
-		// }
-		// }
 		return null;
 	}
 
